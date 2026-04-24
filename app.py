@@ -9,6 +9,7 @@ st.title(" Simulador de Desempenho")
 c1, c2 = st.columns(2)
 with c1: n1 = st.text_input("Nota 1", value="0")
 with c2: n2 = st.text_input("Nota 2", value="0")
+with c3: n3 = st.text_input("Nota 3", value="0")
   
 if st.button("Analisar Notas", use_container_width=True):
   try:
