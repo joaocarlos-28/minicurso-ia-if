@@ -191,7 +191,7 @@ nomes_notas  = ["Nota 1", "Nota 2", "Nota 3", "Nota 4"]
 preview = [validar_nota(v, "")[0] or 0.0 for v in entradas_raw]
 if any(v.strip() != "" for v in entradas_raw):
     st.markdown("#### 👁️ Preview em tempo real")
-    st.plotly_chart(fig_barras(preview, nomes_notas), use_container_width=True)
+    st.plotly_chart(fig_barras(preview, nomes_notas), use_container_width=True, key="chart_preview")
 
 st.divider()
 
@@ -253,11 +253,11 @@ if calcular:
         tab1, tab2, tab3 = st.tabs(["📊 Barras", "🕸️ Radar", "🎯 Velocímetro"])
 
         with tab1:
-            st.plotly_chart(fig_barras(notas, nomes_notas), use_container_width=True)
+            st.plotly_chart(fig_barras(notas, nomes_notas), use_container_width=True, key="chart_barras")
         with tab2:
-            st.plotly_chart(fig_radar(notas, nomes_notas), use_container_width=True)
+            st.plotly_chart(fig_radar(notas, nomes_notas), use_container_width=True, key="chart_radar")
         with tab3:
-            st.plotly_chart(fig_gauge(media), use_container_width=True)
+            st.plotly_chart(fig_gauge(media), use_container_width=True, key="chart_gauge")
             st.markdown(
                 f"<div style='text-align:center;font-family:DM Mono,monospace;"
                 f"font-size:12px;color:#6b7280;'>Linha azul = mínimo para aprovação ({MEDIA_APROVACAO})</div>",
@@ -304,4 +304,4 @@ if st.session_state.historico:
             xaxis=dict(gridcolor="#232840"),
             margin=dict(t=20, b=10, l=10, r=10), height=280,
         )
-        st.plotly_chart(fig_hist, use_container_width=True)
+        st.plotly_chart(fig_hist, use_container_width=True, key="chart_historico")
